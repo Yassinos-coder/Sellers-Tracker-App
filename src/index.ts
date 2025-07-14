@@ -1,6 +1,7 @@
 import express from "express";
 import helmet from "helmet";
 import dotenv from "dotenv";
+import { Dashboard } from "./bullDashboard/dashboard";
 
 dotenv.config();
 
@@ -34,6 +35,7 @@ app.use(express.json());
 
 
 // Mount Bull Board dashboard
+Dashboard.getInstance().mount(app);
 
 // Start server
 app.listen(PORT, () => {
