@@ -2,6 +2,7 @@ import express from "express";
 import helmet from "helmet";
 import dotenv from "dotenv";
 import { Dashboard } from "./bullDashboard/dashboard";
+import AppRouter from "./routes/index";
 
 dotenv.config();
 
@@ -32,7 +33,9 @@ app.use(express.json());
 // });
 
 // Mount API routes
-
+// You need to add this
+const apiRouter = new AppRouter("/api");
+app.use("/api", apiRouter.getRouter());
 
 // Mount Bull Board dashboard
 Dashboard.getInstance().mount(app);
