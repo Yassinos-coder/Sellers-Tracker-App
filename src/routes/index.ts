@@ -14,10 +14,6 @@ class AppRouter {
   }
 
   private setupRoutes() {
-    // this.router.post(
-    //   "/formSubmission",
-    //   formSubmissionController.handleSubmission
-    // );
     this.router.post("/changedAdminEvent", handler.CatchEvent);
 
 
