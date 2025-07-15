@@ -4,7 +4,7 @@ import { createBullBoard } from "@bull-board/api";
 import { BullAdapter } from "@bull-board/api/bullAdapter";
 import { Express } from "express";
 import { Queue } from "bull";
-import { notifySlackQueue } from "../queues/AdminChange.queue";
+import { adminChangeQueue } from "../queues/AdminChange.queue";
 
 export class Dashboard {
   private static instance: Dashboard;
@@ -23,7 +23,7 @@ export class Dashboard {
   public static getInstance(): Dashboard {
     if (!Dashboard.instance) {
       Dashboard.instance = new Dashboard([
-        notifySlackQueue, // 👈 Add your queue here
+        adminChangeQueue, // 👈 Add your queue here
       ]);
     }
     return Dashboard.instance;

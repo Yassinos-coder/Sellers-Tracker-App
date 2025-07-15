@@ -3,6 +3,7 @@ import helmet from "helmet";
 import dotenv from "dotenv";
 import { Dashboard } from "./bullDashboard/dashboard";
 import AppRouter from "./routes/index";
+import { ClientAdminChangeWorker } from "./workers/adminChange.worker";
 
 dotenv.config();
 
@@ -36,6 +37,7 @@ app.use(express.json());
 // You need to add this
 const apiRouter = new AppRouter("/api");
 app.use("/api", apiRouter.getRouter());
+const adminChangeWorker = new ClientAdminChangeWorker();
 
 // Mount Bull Board dashboard
 Dashboard.getInstance().mount(app);
@@ -45,3 +47,4 @@ app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
   console.log(`📊 Bull Dashboard available at http://localhost:${PORT}/admin/queues`);
 });
+

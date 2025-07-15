@@ -1,7 +1,7 @@
 import { Router as ExpressRouter } from "express";
-import { EventHandler } from "../controllers/EventHandler.controller";
+import { adminChange } from "../controllers/adminChange.controller";
 
-const handler = new EventHandler();
+const handler = new adminChange();
 
 class AppRouter {
   private router: ExpressRouter;
@@ -15,8 +15,6 @@ class AppRouter {
 
   private setupRoutes() {
     this.router.post("/changedAdminEvent", handler.CatchEvent);
-
-
   }
 
   getRouter() {
