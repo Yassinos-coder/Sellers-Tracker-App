@@ -32,7 +32,7 @@ export class adminChange {
       );
 
       return res.status(200).json({
-        message: "Client KPI addition handled successfully",
+        message: "Client admin change event handled successfully",
       });
     } catch (error) {
       console.error("❌ Unexpected error in CatchEvent:", error);
