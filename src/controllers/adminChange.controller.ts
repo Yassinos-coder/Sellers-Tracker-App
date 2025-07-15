@@ -29,6 +29,9 @@ export class adminChange {
         console.log(
           `✅ Received admin change event for client ${client.clientId}`
         );
+        res.status(200).json({
+          message: "✅ Client admin change event handled successfully",
+        });
       } else {
         console.log("Event not CHANGED_CLIENT_ADMIN so ignored");
         res
