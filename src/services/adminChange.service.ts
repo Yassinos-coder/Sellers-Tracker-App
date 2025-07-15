@@ -22,9 +22,10 @@ export class ClientAdminChange {
     };
   }) {
     const fullName = `${client.subject.user.first_name} ${client.subject.user.last_name}`;
+    const actualSeller = `${client.associated_admin.first_name} ${client.associated_admin.last_name}`;
     const actorName = client.actor.name;
 
-    const message = `🔄 Seller agent was changed for client: ${fullName} by seller: ${actorName}.`;
+    const message = `🔄 L’agent vendeur a été changé pour le client : ${fullName} par le vendeur : ${actorName}.\n Vendeur actuelle est : ${actualSeller} `;
 
     try {
       const response = await axios.post(
