@@ -25,7 +25,7 @@ export class ClientAdminChange {
     const actualSeller = `${client.associated_admin.first_name} ${client.associated_admin.last_name}`;
     const actorName = client.actor.name;
 
-    const message = `🔄 L’agent vendeur a été changé pour le client : ${fullName} par le vendeur : ${actorName}.\n Vendeur actuelle est : ${actualSeller} `;
+    const message = `🔄 L’agent vendeur a été changé \n pour le client : ${fullName} \n par le vendeur : ${actorName}.\n Vendeur actuelle est : ${actualSeller} `;
 
     try {
       const response = await axios.post(
