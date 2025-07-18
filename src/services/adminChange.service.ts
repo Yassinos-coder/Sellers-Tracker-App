@@ -58,7 +58,6 @@ export class ClientAdminChange {
       const timestamp = new Date().toISOString();
       const adminName = `${client.associated_admin.first_name} ${client.associated_admin.last_name}`;
       const actorName = client.actor.name;
-
       const newEntry = {
         changed_by: actorName,
         new_admin: adminName,

@@ -16,7 +16,7 @@ export class supabaseRepository {
         .eq("client_id", PAYLOAD.client_id)
         .single();
 
-      if (fetchError) throw '❌ Error fetching';
+      if (fetchError) throw "❌ Error fetching";
 
       // Step 2: Merge new entry
       const updatedHistory = {
@@ -31,11 +31,33 @@ export class supabaseRepository {
         .update({ affected_cm_history: updatedHistory })
         .eq("client_id", PAYLOAD.client_id);
 
-      if (updateError)  throw '❌ Error updating';
+      if (updateError) throw "❌ Error updating";
 
       return data;
     } catch (error) {
       console.error("Update error:", error);
+      throw error;
+    }
+  };
+  public checkSeller = async (actorID: number): Promise<string | boolean> => {
+    try {
+      const { data, error } = await supabaseClient
+        .schema("tutorax")
+        .from("client_managers")
+        .select("*")
+        .eq("client_manager_id", actorID);
+
+      if (error) {
+        throw new Error(`Error checking seller: ${error.message}`);
+      }
+
+      if (!data?.length) {
+        return false;
+      }
+
+      return true; // Actor is a seller
+    } catch (error) {
+      console.error("Error checking seller:", error);
       throw error;
     }
   };
